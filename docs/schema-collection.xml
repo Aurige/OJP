@@ -7,8 +7,8 @@
 	<xi:include href="../OJP/OJP_FareSupport.xsd"/>
 	<xi:include href="../OJP/OJP_JourneySupport.xsd"/>
 	<xi:include href="../OJP/OJP_ModesSupport.xsd"/>
-	<xi:include href="../OJP/OJP_Places.xsd"/>
-	<xi:include href="../OJP/OJP_PlaceSupport.xsd"/>
+	<xi:include href="../OJP/OJP_Locations.xsd"/>
+	<xi:include href="../OJP/OJP_LocationSupport.xsd"/>
 	<xi:include href="../OJP/OJP_Requests.xsd"/>
 	<xi:include href="../OJP/OJP_RequestSupport.xsd"/>
 	<xi:include href="../OJP/OJP_SituationSupport.xsd"/>
