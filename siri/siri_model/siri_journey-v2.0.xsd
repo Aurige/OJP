@@ -23,17 +23,14 @@
 				<Date>
 					<Modified>2007-03-29</Modified>
 				</Date>
-				<Date>
-					<Modified>2008-11-13</Modified>
+				<Date><Modified>2008-11-13</Modified>
 				 Correct Cardinalities on SIRI DESTINATION REF Structure 
 				</Date>
-				<Date>
-					<Modified>2011-04-18</Modified>
+				<Date><Modified>2011-04-18</Modified>
 				 siri_journey-v2.0.xsd (l.1015). FramedVehicleJourneyRef isn't mandatory in MonitoredCall SIRI-SM answer accourding to CEN TS (prCEN/TS 15531-3:2006 (E) p.56). Make optional. RV ixxx.com
  
 				</Date>
-				<Date>
-					<Modified>2012-03-22</Modified>
+				<Date><Modified>2012-03-22</Modified>
 				SIRI 2.0 
 					[VDV] Add EarliestExpectedArrivalTimeForVehicle to Arrival Times Group
 					[VDV] Add ProvisionalExpectedDepartureTime to Departure Times Group
@@ -55,25 +52,21 @@
 					[Fr] Add FirstOrLastJourney to JourneyTimesGroup : SIRI-SM and SIRI-VM
 					[DE] Add Driver Name
 				</Date>
-				<Date>
-					<Modified>2012-04-27</Modified>
+				<Date><Modified>2012-04-27</Modified>
 				SIRI 2.0 
 					[MTA] Add DistanceFromSTop and NumberOFStops away   to  MonitoredCall and OnwardsCall : SIRI-SM and SIRI-ET		
 					[NeTEx] Add Driver/Crew Ref		 
 					
 					[DE] Add ExpectedDeparturePredictionQuality to OnwardVehicleDepartureTimes
 				</Date>
-				<Date>
-					<Modified>2013-01-25</Modified>
+				<Date><Modified>2013-01-25</Modified>
                     WB: elements LowerTimeLimit and UpperTimeLimit optional in prediction quality
 				</Date>
-				<Date>
-					<Modified>2013-02-11</Modified>
+				<Date><Modified>2013-02-11</Modified>
 					ArrivalStopAssignment and DepartureStopAssignment added to DatedCall: SIRI:PT
 					Correction: DestinationDisplay unbounded to allow multiple languages
 				</Date>
-				<Date>
-					<Modified>2014-06-20</Modified>
+				<Date><Modified>2014-06-20</Modified>
 				 [ch] Add origin display wherever destination display as per Cologne meeting (siri-Journey-v2.0.xsd
 				     * [xh[ Add OriginAtDestination    wherever destination display as per Cologne meeting (siri-Journey-v2.0.xsd) 
 				</Date>
