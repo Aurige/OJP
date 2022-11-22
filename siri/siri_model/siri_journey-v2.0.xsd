@@ -23,14 +23,17 @@
 				<Date>
 					<Modified>2007-03-29</Modified>
 				</Date>
-				<Date><Modified>2008-11-13</Modified>
+				<Date>
+					<Modified>2008-11-13</Modified>
 				 Correct Cardinalities on SIRI DESTINATION REF Structure 
 				</Date>
-				<Date><Modified>2011-04-18</Modified>
+				<Date>
+					<Modified>2011-04-18</Modified>
 				 siri_journey-v2.0.xsd (l.1015). FramedVehicleJourneyRef isn't mandatory in MonitoredCall SIRI-SM answer accourding to CEN TS (prCEN/TS 15531-3:2006 (E) p.56). Make optional. RV ixxx.com
  
 				</Date>
-				<Date><Modified>2012-03-22</Modified>
+				<Date>
+					<Modified>2012-03-22</Modified>
 				SIRI 2.0 
 					[VDV] Add EarliestExpectedArrivalTimeForVehicle to Arrival Times Group
 					[VDV] Add ProvisionalExpectedDepartureTime to Departure Times Group
@@ -52,21 +55,25 @@
 					[Fr] Add FirstOrLastJourney to JourneyTimesGroup : SIRI-SM and SIRI-VM
 					[DE] Add Driver Name
 				</Date>
-				<Date><Modified>2012-04-27</Modified>
+				<Date>
+					<Modified>2012-04-27</Modified>
 				SIRI 2.0 
 					[MTA] Add DistanceFromSTop and NumberOFStops away   to  MonitoredCall and OnwardsCall : SIRI-SM and SIRI-ET		
 					[NeTEx] Add Driver/Crew Ref		 
 					
 					[DE] Add ExpectedDeparturePredictionQuality to OnwardVehicleDepartureTimes
 				</Date>
-				<Date><Modified>2013-01-25</Modified>
+				<Date>
+					<Modified>2013-01-25</Modified>
                     WB: elements LowerTimeLimit and UpperTimeLimit optional in prediction quality
 				</Date>
-				<Date><Modified>2013-02-11</Modified>
+				<Date>
+					<Modified>2013-02-11</Modified>
 					ArrivalStopAssignment and DepartureStopAssignment added to DatedCall: SIRI:PT
 					Correction: DestinationDisplay unbounded to allow multiple languages
 				</Date>
-				<Date><Modified>2014-06-20</Modified>
+				<Date>
+					<Modified>2014-06-20</Modified>
 				 [ch] Add origin display wherever destination display as per Cologne meeting (siri-Journey-v2.0.xsd
 				     * [xh[ Add OriginAtDestination    wherever destination display as per Cologne meeting (siri-Journey-v2.0.xsd) 
 				</Date>
@@ -897,4 +904,192 @@ Rail transport, Roads and road transport
 		</xsd:annotation>
 	</xsd:element>
 	<!-- ====================================================================== -->
+	<!-- TODO the new SIRI is integrated, this part will be removed as the PassengerCapacityStructure and VehicleOccupancyStructure will be defined there. Here aonly a reduced amount is included -->
+	<xsd:group name="PassengerCapacityGroup">
+		<xsd:annotation>
+			<xsd:documentation>Elements for a PASSENGER CAPACITY. Used to indicate the maximum capacities of a TRAIN ELEMENT or the estimated/recorded capacities of a VEHICLE at a given stop, i.e., the number of seats available. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TotalCapacity" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The total capacity of the vehicle in number of passengers.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SeatingCapacity" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The seating capacity of the vehicle in number of passengers.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StandingCapacity" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The standing capacity of the vehicle in number of passengers.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SpecialPlaceCapacity" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of special places on the vehicle, e.g. seats for the disabled or lounge seats.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PushchairCapacity" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of push chair places on the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WheelchairPlaceCapacity" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of wheelchair places on the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PramPlaceCapacity" type="xsd:nonNegativeInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of places on the vehicle that are suitable for prams.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BicycleRackCapacity" type="xsd:nonNegativeInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of bicycle racks on the vehicle.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<!--will be updated with new SIRI	<xsd:group name="OccupancyScopeFilterGroup">
+		<xsd:annotation>
+			<xsd:documentation>The intersection of supplied elements describes the extent that the Occupancy values applies to. (since SIRI 2.1)
+Only vehicle-centric filter (measurement in a part or at an entrance of a TRAIN) are available here, but a stop-centric filtering (measurement in a sector or at a position on a QUAY) can be achieved indirectly via Arrival-/DepartureFormationAssignment.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:group ref="TrainFormationReferenceGroup" minOccurs="0"/>
+			<xsd:element name="FareClass" type="FareClassEnumeration" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Fare class in VEHICLE for which occupancy or capacities are specified.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PassengerCategory" type="NaturalLanguageStringStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Adult, child, wheelchair etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group> -->
+	<xsd:group name="OccupancyValuesGroup">
+		<xsd:annotation>
+			<xsd:documentation>Occupancy values applying to indicated scope. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="OccupancyLevel" type="OccupancyEnumeration" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. 'manySeatsAvailable' or 'standingRoomOnly'.  
+More accurate data can be provided by the individual occupancies or capacities below.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OccupancyPercentage" type="PercentageType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Utilised percentage of maximum payload after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AlightingCount" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of alighting passengers for this vehicle journey at this STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BoardingCount" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of boarding passengers for this vehicle journey at this STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OnboardCount" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of passengers on-board after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SpecialPlacesOccupied" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of special places, e.g. seats for the disabled or lounge seats, that are occupied after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PushchairsOnboardCount" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of pushchairs on-board after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="WheelchairsOnboardCount" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of wheelchairs on-board after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PramsOnboardCount" type="xsd:nonNegativeInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of prams on-board after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BicycleOnboardCount" type="xsd:nonNegativeInteger" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of bicycles on-board, i.e., number of bicycle racks that are occupied after departing the STOP POINT.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:element name="ExpectedDepartureOccupancy" type="VehicleOccupancyStructure">
+		<xsd:annotation>
+			<xsd:documentation>Expected/Predicted real-time occupancies of a VEHICLE and reservations after departing from a given stop. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="ExpectedDepartureCapacities" type="PassengerCapacityStructure">
+		<xsd:annotation>
+			<xsd:documentation>Expected/Predicted real-time capacities (number of available seats) of a VEHICLE after departing from a given stop. Alternative way to communicate occupancy measurements. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RecordedDepartureOccupancy" type="VehicleOccupancyStructure">
+		<xsd:annotation>
+			<xsd:documentation>Actually recorded/counted occupancies of a VEHICLE and reserved seats after departing from a given stop. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="RecordedDepartureCapacities" type="PassengerCapacityStructure">
+		<xsd:annotation>
+			<xsd:documentation>Actually recorded/counted capacities of a VEHICLE after departing from a given stop. Alternative way to communicate occupancy measurements. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:complexType name="VehicleOccupancyStructure">
+		<xsd:annotation>
+			<xsd:documentation>Real-time occupancies of a VEHICLE (by fare class). Could be feedback from an automatic passenger counting system (APC) or estimated values from statistics. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!-- <xsd:group ref="OccupancyScopeFilterGroup"/> -->
+			<xsd:group ref="OccupancyValuesGroup"/>
+			<xsd:element name="TotalNumberOfReservedSeats" type="NumberOfPassengers" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Total number of booked seats from individual and group reservations.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<!--will be updated with new SIRI <xsd:element name="GroupReservation" type="GroupReservationStructure" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reservations of travel groups, i.e., name of group and number of seats booked.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element> -->
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PassengerCapacityStructure">
+		<xsd:annotation>
+			<xsd:documentation>Real-time capacities of a VEHICLE (by fare class), i.e., number of available seats. Alternative way to communicate occupancy measurements. (since SIRI 2.1)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<!--will be updated with new SIRI <xsd:group ref="OccupancyScopeFilterGroup"/> -->
+			<xsd:group ref="PassengerCapacityGroup"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="NumberOfPassengers">
+		<xsd:annotation>
+			<xsd:documentation>Number of passengers - capacity.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:nonNegativeInteger"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="PercentageType">
+		<xsd:annotation>
+			<xsd:documentation>Specifies a percentage from 0 to 100.
+The value range is normally 0-100, but could in some circumstances go beyond 100%, e.g. when representing the OccupancyPercentage of an over-crowded vehicle or in similar cases.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
 </xsd:schema>
