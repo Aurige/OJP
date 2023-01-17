@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
+  # Triggers the workflow on push or pull request events but only for these branches
   push:
     branches: [ "master", "main", "changes_for_v*" ]
   pull_request:
@@ -10,9 +10,24 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  run:
+  check-and-build:
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - run: echo "Job was automatically triggered by a ${{ github.event_name }} event for branch ${{ github.ref }}"
@@ -38,11 +53,26 @@ jobs:
       - name: Check schema structure for generation for documentation tables
         run: ./docs/validate-schema-conventions.sh
 
-      - name: Generate documentation tables
-        run: ./docs/generate-tables.sh
-
       - name: Commit changes
         uses: EndBug/add-and-commit@v9 # https://github.com/marketplace/actions/add-commit
         with:
           default_author: github_actions
-          message: 'Lint and update documentation tables'
+          message: 'Fixed linting errors'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Generate documentation tables
+        run: ./docs/generate-tables.sh
+
+      - name: Move generated files
+        run: ./.github/scripts/move-generated-files.sh
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './docs/generated'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
